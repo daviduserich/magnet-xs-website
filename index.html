@@ -712,18 +712,16 @@
     .pillar-card::after {
       content: "";
       position: absolute;
-      bottom: -10%;
-      right: -5%;
-      width: 200px;
-      height: 200px;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      opacity: 0.04; /* Very subtle watermark */
+      opacity: 0.25; /* Dezent, aber sichtbar */
       pointer-events: none;
-      z-index: -1;
-      transform: rotate(-10deg);
-      filter: grayscale(100%) brightness(200%); /* White out the logos */
+      z-index: 0;
     }
 
     .pillar-card.acp::after {
