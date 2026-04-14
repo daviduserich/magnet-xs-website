@@ -702,6 +702,41 @@
       .pillar-cta-wrapper { padding: 16px 24px 28px; }
       .contact-form { padding: 24px; }
     }
+    /* Logo Watermarks for Cards */
+    .pillar-card {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .pillar-card::after {
+      content: "";
+      position: absolute;
+      bottom: -10%;
+      right: -5%;
+      width: 200px;
+      height: 200px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.04; /* Very subtle watermark */
+      pointer-events: none;
+      z-index: -1;
+      transform: rotate(-10deg);
+      filter: grayscale(100%) brightness(200%); /* White out the logos */
+    }
+
+    .pillar-card.acp::after {
+      background-image: url('acp_logo.png');
+    }
+
+    .pillar-card.recruiting::after {
+      background-image: url('mxs_logo.png');
+    }
+
+    .pillar-card.strategy::after {
+      background-image: url('strategy_logo.png');
+    }
   </style>
 </head>
 <body>
