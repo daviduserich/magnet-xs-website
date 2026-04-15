@@ -1,11 +1,10 @@
 # magnet-xs.com - Robots.txt
-# Nur die Hauptseite soll indexiert werden
 
 User-agent: *
 Allow: /index.html
+Allow: /strategie.html
 Allow: /$
 
 # Interne Seiten blockieren
 Disallow: /signatur-david.html
 Disallow: /signatur-carmen.html
-Disallow: /strategie.html
