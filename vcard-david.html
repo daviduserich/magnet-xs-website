@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>David Hügli – magnet-Xs</title>
   <meta name="description" content="Digitale Visitenkarte von David Hügli – Gründer & Digitalisierungsexperte bei magnet-Xs gmbh">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="David Hügli">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0a0a1a">
-  <!-- QRious – browser-native QR Code library -->
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,7 +129,6 @@
   </main>
   <footer class="footer">magnet-Xs gmbh · Vordere Hauptgasse 102/104 · 4800 Zofingen</footer>
   <script>
-    // vCard mit nur Büronummer
     const vcard = [
       'BEGIN:VCARD','VERSION:3.0','FN:David H\u00fcgli','N:H\u00fcgli;David;;;',
       'ORG:magnet-Xs gmbh','TITLE:Digitalisierungs-Macher & KI-Pionier',
@@ -141,8 +140,6 @@
       'ADR;TYPE=WORK:;;Vordere Hauptgasse 102/104;Zofingen;;4800;Schweiz',
       'END:VCARD'
     ].join('\n');
-
-    // QRious – funktioniert nativ im Browser
     new QRious({
       element: document.getElementById('qrCanvas'),
       value: vcard,
