@@ -1,0 +1,12 @@
+{
+  "name": "Carmen Caselli",
+  "short_name": "Carmen C.",
+  "description": "Digitale Visitenkarte – magnet-Xs gmbh",
+  "icons": [
+    { "src": "carmen.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "any maskable" }
+  ],
+  "start_url": "/vcard-carmen.html",
+  "display": "standalone",
+  "background_color": "#08060f",
+  "theme_color": "#08060f"
+}

@@ -6,11 +6,14 @@
   <title>Carmen Caselli – magnet-Xs</title>
   <meta name="description" content="Digitale Visitenkarte von Carmen Caselli – Business Development bei magnet-Xs gmbh">
   <meta name="robots" content="noindex, nofollow">
+  <!-- PWA / App-Icon -->
+  <link rel="manifest" href="manifest-carmen.json">
+  <link rel="apple-touch-icon" href="carmen.jpg">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Carmen Caselli">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#0a060f">
+  <meta name="theme-color" content="#08060f">
   <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,8 +61,9 @@
     .link-arrow { font-size: 16px; color: var(--text-muted); flex-shrink: 0; }
     .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; padding-left: 4px; }
     .pwa-banner { background: linear-gradient(135deg, rgba(201,124,236,0.12), rgba(240,111,170,0.08)); border: 1px solid rgba(201,124,236,0.22); border-radius: 14px; padding: 14px 16px; text-align: center; margin-top: 24px; }
-    .pwa-banner p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+    .pwa-banner p { font-size: 12px; color: var(--text-muted); line-height: 1.8; }
     .pwa-banner strong { color: var(--text); }
+    .pwa-banner .safari-hint { display: inline-block; margin-top: 6px; font-size: 11px; color: rgba(245,240,255,0.4); background: rgba(255,255,255,0.04); border-radius: 6px; padding: 4px 10px; }
     .footer { text-align: center; padding: 20px; font-size: 11px; color: rgba(245,240,255,0.3); }
   </style>
 </head>
@@ -129,8 +133,12 @@
       </a>
     </div>
     <div class="pwa-banner">
-      <p>📲 <strong>Auf Startbildschirm speichern:</strong><br>
-      iOS: Teilen → «Zum Home-Bildschirm» &nbsp;|&nbsp; Android: Menü → «App installieren»</p>
+      <p>
+        📲 <strong>Auf Startbildschirm speichern:</strong><br>
+        🍎 iOS: Link in <strong>Safari</strong> öffnen → Teilen ↑ → «Zum Home-Bildschirm»<br>
+        🤖 Android: Link in Chrome öffnen → Menü ⋮ → «App installieren»
+        <span class="safari-hint">⚠️ iPhone: Funktioniert nur in Safari, nicht in Telegram/WhatsApp</span>
+      </p>
     </div>
   </main>
   <footer class="footer">magnet-Xs gmbh · Vordere Hauptgasse 102/104 · 4800 Zofingen</footer>

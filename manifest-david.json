@@ -1,0 +1,12 @@
+{
+  "name": "David Hügli",
+  "short_name": "David H.",
+  "description": "Digitale Visitenkarte – magnet-Xs gmbh",
+  "icons": [
+    { "src": "david.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "any maskable" }
+  ],
+  "start_url": "/vcard-david.html",
+  "display": "standalone",
+  "background_color": "#06060f",
+  "theme_color": "#06060f"
+}
