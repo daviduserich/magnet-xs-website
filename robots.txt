@@ -8,3 +8,5 @@ Allow: /$
 # Interne Seiten blockieren
 Disallow: /signatur-david.html
 Disallow: /signatur-carmen.html
+Disallow: /vcard-david.html
+Disallow: /vcard-carmen.html
