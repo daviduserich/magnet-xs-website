@@ -6,7 +6,7 @@
     { "src": "icon-carmen.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "start_url": "/vcard-carmen.html",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#08060f",
   "theme_color": "#08060f"
 }

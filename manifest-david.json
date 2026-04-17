@@ -6,7 +6,7 @@
     { "src": "icon-david.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "start_url": "/vcard-david.html",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#06060f",
   "theme_color": "#06060f"
 }
