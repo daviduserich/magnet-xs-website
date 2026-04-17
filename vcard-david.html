@@ -10,7 +10,8 @@
   <meta name="apple-mobile-web-app-title" content="David Hügli">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0a0a1a">
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <!-- QRious – browser-native QR Code library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -96,9 +97,9 @@
         <div class="link-info"><div class="link-label">david.huegli@magnet-xs.com</div><div class="link-sub">E-Mail</div></div>
         <span class="link-arrow">›</span>
       </a>
-      <a href="tel:+41796326505" class="link-card" id="btn-phone">
+      <a href="tel:+41625112105" class="link-card" id="btn-phone">
         <div class="link-icon tel">📞</div>
-        <div class="link-info"><div class="link-label">+41 79 632 65 05</div><div class="link-sub">Mobile</div></div>
+        <div class="link-info"><div class="link-label">+41 62 511 21 05</div><div class="link-sub">Büro</div></div>
         <span class="link-arrow">›</span>
       </a>
     </div>
@@ -128,18 +129,28 @@
   </main>
   <footer class="footer">magnet-Xs gmbh · Vordere Hauptgasse 102/104 · 4800 Zofingen</footer>
   <script>
+    // vCard mit nur Büronummer
     const vcard = [
-      'BEGIN:VCARD','VERSION:3.0','FN:David Hügli','N:Hügli;David;;;',
+      'BEGIN:VCARD','VERSION:3.0','FN:David H\u00fcgli','N:H\u00fcgli;David;;;',
       'ORG:magnet-Xs gmbh','TITLE:Digitalisierungs-Macher & KI-Pionier',
       'EMAIL;TYPE=WORK:david.huegli@magnet-xs.com',
-      'TEL;TYPE=CELL:+41796326505','TEL;TYPE=WORK:+41625112105',
-      'URL:https://magnet-xs.com','URL:https://www.linkedin.com/in/david-huegli/',
+      'TEL;TYPE=WORK:+41625112105',
+      'URL:https://magnet-xs.com',
+      'URL:https://www.linkedin.com/in/david-huegli/',
       'URL:https://acp-authentic-content-pilot.com/',
-      'ADR;TYPE=WORK:;;Vordere Hauptgasse 102/104;Zofingen;;4800;Schweiz','END:VCARD'
+      'ADR;TYPE=WORK:;;Vordere Hauptgasse 102/104;Zofingen;;4800;Schweiz',
+      'END:VCARD'
     ].join('\n');
-    QRCode.toCanvas(document.getElementById('qrCanvas'), vcard, {
-      width: 220, margin: 1, color: { dark: '#1a1a2e', light: '#ffffff' }, errorCorrectionLevel: 'M'
-    }, function(err) { if (err) console.error('QR Error:', err); });
+
+    // QRious – funktioniert nativ im Browser
+    new QRious({
+      element: document.getElementById('qrCanvas'),
+      value: vcard,
+      size: 220,
+      level: 'M',
+      foreground: '#1a1a2e',
+      background: '#ffffff'
+    });
   </script>
 </body>
 </html>
