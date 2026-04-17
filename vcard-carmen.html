@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Carmen Caselli – magnet-Xs</title>
+  <meta name="description" content="Digitale Visitenkarte von Carmen Caselli – Business Development bei magnet-Xs gmbh">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Carmen Caselli">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0a060f">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #08060f; --surface: rgba(255,255,255,0.05); --surface-hover: rgba(255,255,255,0.09);
+      --border: rgba(255,255,255,0.08); --text: #f5f0ff; --text-muted: rgba(245,240,255,0.55);
+    }
+    html, body { min-height: 100dvh; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+    .aurora-header { position: relative; width: 100%; padding: 52px 24px 36px; text-align: center; overflow: hidden; background: #08060f; }
+    .aurora-bg { position: absolute; inset: 0; pointer-events: none; }
+    .aurora-bg::before { content: ''; position: absolute; top: -60px; left: -80px; width: 520px; height: 380px; background: radial-gradient(ellipse at center, rgba(201,124,236,0.40) 0%, transparent 70%); border-radius: 50%; animation: aurShift 8s ease-in-out infinite alternate; }
+    .aurora-bg::after { content: ''; position: absolute; top: -30px; right: -60px; width: 400px; height: 300px; background: radial-gradient(ellipse at center, rgba(240,111,170,0.28) 0%, transparent 70%); border-radius: 50%; animation: aurShift2 10s ease-in-out infinite alternate; }
+    .aurora-glow3 { position: absolute; bottom: -80px; left: 50%; transform: translateX(-50%); width: 300px; height: 200px; background: radial-gradient(ellipse at center, rgba(240,198,116,0.15) 0%, transparent 70%); border-radius: 50%; }
+    @keyframes aurShift { from { transform: translate(0,0) scale(1); } to { transform: translate(40px, 30px) scale(1.15); } }
+    @keyframes aurShift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-30px, 20px) scale(1.1); } }
+    .header-content { position: relative; z-index: 1; }
+    .avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; border: 3px solid rgba(201,124,236,0.6); box-shadow: 0 0 0 6px rgba(201,124,236,0.12), 0 8px 32px rgba(0,0,0,0.5); margin-bottom: 16px; }
+    .logo-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 18px; }
+    .logo-icon { width: 28px; height: 28px; opacity: 0.85; }
+    .logo-text { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
+    h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; background: linear-gradient(135deg, #fff 30%, rgba(201,124,236,0.9) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; }
+    .title-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--text-muted); background: rgba(201,124,236,0.12); border: 1px solid rgba(201,124,236,0.2); border-radius: 100px; padding: 4px 14px; margin-top: 8px; }
+    .card-body { max-width: 480px; margin: 0 auto; padding: 0 20px 40px; }
+    .qr-section { margin: 24px 0; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .qr-wrapper { background: #fff; border-radius: 16px; padding: 16px; display: inline-flex; box-shadow: 0 8px 40px rgba(201,124,236,0.25), 0 2px 12px rgba(0,0,0,0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .qr-wrapper:hover { transform: scale(1.03); box-shadow: 0 12px 50px rgba(201,124,236,0.4), 0 4px 20px rgba(0,0,0,0.5); }
+    .qr-hint { font-size: 12px; color: var(--text-muted); text-align: center; }
+    .divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .links-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .link-card { display: flex; align-items: center; gap: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; text-decoration: none; color: var(--text); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+    .link-card:hover, .link-card:active { background: var(--surface-hover); border-color: rgba(201,124,236,0.35); transform: translateX(3px); }
+    .link-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+    .link-icon.li   { background: rgba(10,102,194,0.2);  border: 1px solid rgba(10,102,194,0.3); }
+    .link-icon.acp  { background: rgba(201,124,236,0.2); border: 1px solid rgba(201,124,236,0.3); }
+    .link-icon.mxs  { background: rgba(240,111,170,0.15);border: 1px solid rgba(240,111,170,0.25); }
+    .link-icon.tel  { background: rgba(52,199,89,0.15);  border: 1px solid rgba(52,199,89,0.25); }
+    .link-icon.mail { background: rgba(240,198,116,0.15);border: 1px solid rgba(240,198,116,0.25); }
+    .link-icon.cal  { background: rgba(62,201,192,0.15); border: 1px solid rgba(62,201,192,0.25); }
+    .link-info { flex: 1; min-width: 0; }
+    .link-label { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .link-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .link-arrow { font-size: 16px; color: var(--text-muted); flex-shrink: 0; }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.10em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; padding-left: 4px; }
+    .pwa-banner { background: linear-gradient(135deg, rgba(201,124,236,0.12), rgba(240,111,170,0.08)); border: 1px solid rgba(201,124,236,0.22); border-radius: 14px; padding: 14px 16px; text-align: center; margin-top: 24px; }
+    .pwa-banner p { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+    .pwa-banner strong { color: var(--text); }
+    .footer { text-align: center; padding: 20px; font-size: 11px; color: rgba(245,240,255,0.3); }
+  </style>
+</head>
+<body>
+  <header class="aurora-header">
+    <div class="aurora-bg"></div>
+    <div class="aurora-glow3"></div>
+    <div class="header-content">
+      <div class="logo-row">
+        <img src="LOGO_X_alleine_512x512.png" alt="magnet-Xs Logo" class="logo-icon">
+        <span class="logo-text">magnet-Xs gmbh</span>
+      </div>
+      <img src="carmen.jpg" alt="Carmen Caselli" class="avatar">
+      <h1>Carmen Caselli</h1>
+      <span class="title-tag">✨ Business Development &amp; Content</span>
+    </div>
+  </header>
+  <main class="card-body">
+    <div class="qr-section">
+      <div class="qr-wrapper"><canvas id="qrCanvas"></canvas></div>
+      <p class="qr-hint">📱 QR-Code scannen → Kontakt direkt ins Handy</p>
+    </div>
+    <div class="divider"></div>
+    <p class="section-label">Profil</p>
+    <div class="links-group">
+      <a href="https://www.linkedin.com/in/carmen-caselli/" target="_blank" class="link-card" id="btn-linkedin">
+        <div class="link-icon li">💼</div>
+        <div class="link-info"><div class="link-label">Carmen Caselli</div><div class="link-sub">LinkedIn Profil</div></div>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+    <p class="section-label">Kontakt</p>
+    <div class="links-group">
+      <a href="mailto:carmen.caselli@magnet-xs.com" class="link-card" id="btn-email">
+        <div class="link-icon mail">✉️</div>
+        <div class="link-info"><div class="link-label">carmen.caselli@magnet-xs.com</div><div class="link-sub">E-Mail</div></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a href="tel:+41625112105" class="link-card" id="btn-phone">
+        <div class="link-icon tel">📞</div>
+        <div class="link-info"><div class="link-label">+41 62 511 21 05</div><div class="link-sub">Büro</div></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a href="https://calendly.com/carmen-caselli/30min" target="_blank" class="link-card" id="btn-calendly">
+        <div class="link-icon cal">📅</div>
+        <div class="link-info"><div class="link-label">Termin buchen</div><div class="link-sub">30 Min. Online-Gespräch</div></div>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+    <div class="divider"></div>
+    <p class="section-label">Projekte &amp; Angebote</p>
+    <div class="links-group">
+      <a href="https://acp-authentic-content-pilot.com/" target="_blank" class="link-card" id="btn-acp">
+        <div class="link-icon acp">🚀</div>
+        <div class="link-info"><div class="link-label">Authentic Content Pilot</div><div class="link-sub">Social-Media auf Autopilot</div></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a href="https://mxs-talent-solutions.com/" target="_blank" class="link-card" id="btn-talent">
+        <div class="link-icon mxs">🎯</div>
+        <div class="link-info"><div class="link-label">mXs Talent Solutions</div><div class="link-sub">Employer Branding &amp; Recruiting</div></div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a href="https://magnet-xs.com/" target="_blank" class="link-card" id="btn-mxs">
+        <div class="link-icon mxs">🌐</div>
+        <div class="link-info"><div class="link-label">magnet-xs.com</div><div class="link-sub">Digitalisierung &amp; KI-Strategie</div></div>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+    <div class="pwa-banner">
+      <p>📲 <strong>Auf Startbildschirm speichern:</strong><br>
+      iOS: Teilen → «Zum Home-Bildschirm» &nbsp;|&nbsp; Android: Menü → «App installieren»</p>
+    </div>
+  </main>
+  <footer class="footer">magnet-Xs gmbh · Vordere Hauptgasse 102/104 · 4800 Zofingen</footer>
+  <script>
+    const vcard = [
+      'BEGIN:VCARD','VERSION:3.0','FN:Carmen Caselli','N:Caselli;Carmen;;;',
+      'ORG:magnet-Xs gmbh','TITLE:Business Development & Content',
+      'EMAIL;TYPE=WORK:carmen.caselli@magnet-xs.com',
+      'TEL;TYPE=WORK:+41625112105',
+      'URL:https://magnet-xs.com','URL:https://www.linkedin.com/in/carmen-caselli/',
+      'URL:https://acp-authentic-content-pilot.com/',
+      'URL:https://calendly.com/carmen-caselli/30min',
+      'ADR;TYPE=WORK:;;Vordere Hauptgasse 102/104;Zofingen;;4800;Schweiz','END:VCARD'
+    ].join('\n');
+    QRCode.toCanvas(document.getElementById('qrCanvas'), vcard, {
+      width: 220, margin: 1, color: { dark: '#1a0e2e', light: '#ffffff' }, errorCorrectionLevel: 'M'
+    }, function(err) { if (err) console.error('QR Error:', err); });
+  </script>
+</body>
+</html>
