@@ -3,7 +3,7 @@
   "short_name": "David H.",
   "description": "Digitale Visitenkarte – magnet-Xs gmbh",
   "icons": [
-    { "src": "david.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "any maskable" }
+    { "src": "icon-david.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "start_url": "/vcard-david.html",
   "display": "standalone",

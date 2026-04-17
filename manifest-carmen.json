@@ -3,7 +3,7 @@
   "short_name": "Carmen C.",
   "description": "Digitale Visitenkarte – magnet-Xs gmbh",
   "icons": [
-    { "src": "carmen.jpg", "sizes": "any", "type": "image/jpeg", "purpose": "any maskable" }
+    { "src": "icon-carmen.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "start_url": "/vcard-carmen.html",
   "display": "standalone",
