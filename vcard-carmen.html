@@ -10,7 +10,8 @@
   <meta name="apple-mobile-web-app-title" content="Carmen Caselli">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#0a060f">
-  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+  <!-- QRious – browser-native QR Code library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -139,14 +140,22 @@
       'ORG:magnet-Xs gmbh','TITLE:Business Development & Content',
       'EMAIL;TYPE=WORK:carmen.caselli@magnet-xs.com',
       'TEL;TYPE=WORK:+41625112105',
-      'URL:https://magnet-xs.com','URL:https://www.linkedin.com/in/carmen-caselli/',
+      'URL:https://magnet-xs.com',
+      'URL:https://www.linkedin.com/in/carmen-caselli/',
       'URL:https://acp-authentic-content-pilot.com/',
       'URL:https://calendly.com/carmen-caselli/30min',
-      'ADR;TYPE=WORK:;;Vordere Hauptgasse 102/104;Zofingen;;4800;Schweiz','END:VCARD'
+      'ADR;TYPE=WORK:;;Vordere Hauptgasse 102/104;Zofingen;;4800;Schweiz',
+      'END:VCARD'
     ].join('\n');
-    QRCode.toCanvas(document.getElementById('qrCanvas'), vcard, {
-      width: 220, margin: 1, color: { dark: '#1a0e2e', light: '#ffffff' }, errorCorrectionLevel: 'M'
-    }, function(err) { if (err) console.error('QR Error:', err); });
+
+    new QRious({
+      element: document.getElementById('qrCanvas'),
+      value: vcard,
+      size: 220,
+      level: 'M',
+      foreground: '#1a0e2e',
+      background: '#ffffff'
+    });
   </script>
 </body>
 </html>
